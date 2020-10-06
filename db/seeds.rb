@@ -13,17 +13,24 @@
 
 
 
-
-Game.destroy_all
+# Game.destroy_all
 Question.destroy_all
 
+#
+5.times do |t|
+  n = Faker::Name.name
 
-let picsArray = [
+  Game.create(name:n)
+end
+
+
+
+ picsArray = [
   # tropical species
   "https://www.google.com/search?q=animals+in+the+tropics&tbm=isch&chips=q:animals+in+the+tropics,g_1:common:QhRWTm_A3HY%3D&hl=en&sa=X&ved=2ahUKEwjv2uaxkJnsAhVHZt8KHebbDH8Q4lYoAnoECAEQGA&biw=1440&bih=746#imgrc=lZelmtZU5y4AdM&imgdii=NOEbhva1F_LPIM",
   "https://www.google.com/search?q=animals+in+the+tropics&tbm=isch&chips=q:animals+in+the+tropics,g_1:common:QhRWTm_A3HY%3D&hl=en&sa=X&ved=2ahUKEwjv2uaxkJnsAhVHZt8KHebbDH8Q4lYoAnoECAEQGA&biw=1440&bih=746#imgrc=p6f_9RiKlCnV8M",
   "https://www.google.com/search?q=animals+in+the+tropics&tbm=isch&chips=q:animals+in+the+tropics,g_1:common:QhRWTm_A3HY%3D&hl=en&sa=X&ved=2ahUKEwjv2uaxkJnsAhVHZt8KHebbDH8Q4lYoAnoECAEQGA&biw=1440&bih=746#imgrc=6j1jOt8kXNoL-M",
-  "https://pixfeeds.com/images/animals/tigers/1280-497184774-roaring-tiger.jpg"
+  "https://pixfeeds.com/images/animals/tigers/1280-497184774-roaring-tiger.jpg",
   "https://p3w6d7a3.stackpathcdn.com/wp-content/uploads/2017/06/frog-red-eyed-tree-amphibian-tropical-rainforest.jpg",
 
   # temperate species
@@ -50,5 +57,14 @@ let picsArray = [
 "https://www.activewild.com/wp-content/uploads/2016/03/Crabeater-Seal-624x416.jpg",
 "https://www.activewild.com/wp-content/uploads/2015/02/Blue-Whale-Swimming-300x208.jpg",
 "https://www.activewild.com/wp-content/uploads/2016/03/Southern-Elephant-Seal-Antarctic-300x200.jpg",
-  
+
+
  ]
+
+picsArray.each do |url|
+
+  n = Faker::Name.name
+  imagesrc = url
+  game_id = rand(1..5)
+  Question.create(name:n, imagesrc:imagesrc, game_id:game_id)
+  end
